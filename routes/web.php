@@ -21,7 +21,9 @@ use App\Http\Controllers\ProductCategoryController;
 |
 */
 
+
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::get('/', [DashboardController::class, 'index']);
    
     Route::name('dashboard.')->prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
