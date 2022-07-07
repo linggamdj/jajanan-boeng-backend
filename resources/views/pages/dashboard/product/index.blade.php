@@ -40,7 +40,7 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
                     <table id="crudTable">
                         <thead>
-                        <tr>
+                        <tr class="text-left">
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Kategori</th>

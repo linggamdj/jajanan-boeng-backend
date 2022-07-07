@@ -15,7 +15,7 @@
                 columns: [
                     { data: 'id', name: 'id', width: '5%'},
                     { data: 'user.name', name: 'user.name' },
-                    { data: 'total_price', name: 'total_price' },
+                    { data: 'total_price', name: 'total_price'},
                     { data: 'status', name: 'status' },
                     {
                         data: 'action',
@@ -30,12 +30,12 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-left">
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
                     <table id="crudTable">
                         <thead>
-                        <tr>
+                        <tr class>
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Total Harga</th>

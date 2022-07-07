@@ -19,9 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->longText('description');
-
             $table->string('tags')->nullable();
-
             $table->bigInteger('categories_id');
 
             $table->softDeletes();

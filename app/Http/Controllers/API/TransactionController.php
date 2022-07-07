@@ -61,7 +61,7 @@ class TransactionController extends Controller
 
         $transaction = Transaction::create([
             'users_id' => Auth::user()->id,
-            'address' => $request->address,
+            'users_address' => Auth::user()->address,
             'total_price' => $request->total_price,
             'shipping_price' => $request->shipping_price,
             'status' => $request->status

@@ -22,7 +22,8 @@
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        width: '25%'
+                        width: '25%',
+                        className: 'dt-body-left'
                     },
                 ],
             });
@@ -35,7 +36,7 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
                     <table id="crudTable">
                         <thead>
-                        <tr>
+                        <tr class="text-left">
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Email</th>

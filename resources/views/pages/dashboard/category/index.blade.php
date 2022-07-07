@@ -34,7 +34,7 @@
                     + Create Category
                 </a>
             </div>
-            <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="shadow overflow-hidden sm:rounded-md text-center">
                 <div class="px-4 py-5 bg-white sm:p-6">
                     <table id="crudTable">
                         <thead>
