@@ -21,7 +21,8 @@ use App\Http\Controllers\API\ProductCategoryController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('user', [UserController::class, 'fetch']);
-    Route::post('user', [UserController::class, 'updateProfile']);
+    Route::post('updateprofile', [UserController::class, 'updateProfile']);
+    Route::post('changepassword', [UserController::class, 'updatePassword']);
     Route::post('logout', [UserController::class, 'logout']);
 
     Route::get('transactions', [TransactionController::class, 'all']);
