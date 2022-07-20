@@ -9,6 +9,8 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\MyTransactionController;
 use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ResetController;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +39,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::resource('transaction', TransactionController::class)->only([
                 'index', 'show', 'edit', 'update'
             ]);
+            // Route::put('user/{user}', [UserController::class, 'reset'])->name('user.reset');
             Route::resource('user', UserController::class)->only([
-                'index', 'edit', 'update', 'destroy'
+                'index', 'show', 'update', 'destroy'
             ]);
         });
     });

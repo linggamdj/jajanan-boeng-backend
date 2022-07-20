@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -23,13 +25,21 @@ class UserController extends Controller
                 ->addColumn('action', function ($item) {
                     return '
                         <a class="inline-block border border-gray-700 bg-gray-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline" 
-                            href="' . route('dashboard.user.edit', $item->id) . '">
-                            Edit
+                            href="' . route('dashboard.user.show', $item->id) . '">
+                            Detail
                         </a>
+
+                        <form class="inline-block" action="' . route('dashboard.user.update', $item->id) . '" method="POST">
+                            <button class="border border-yellow-500 bg-yellow-500 text-white rounded-md px-2 py-1 m-2 transition duration-500 ease select-none hover:bg-yellow-600 focus:outline-none focus:shadow-outline" >
+                                Reset
+                            </button>
+                            ' . method_field('put') . csrf_field() . '
+                        </form>
+
                         <form class="inline-block" action="' . route('dashboard.user.destroy', $item->id) . '" method="POST">
-                        <button class="border border-red-500 bg-red-500 text-white rounded-md px-2 py-1 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline" >
-                            Hapus
-                        </button>
+                            <button class="border border-red-500 bg-red-500 text-white rounded-md px-2 py-1 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline" >
+                                Hapus
+                            </button>
                             ' . method_field('delete') . csrf_field() . '
                         </form>';
                 })
@@ -45,9 +55,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
     }
 
     /**
@@ -69,7 +78,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('pages.dashboard.user.show',[
+            'item' => $user
+        ]);
     }
 
     /**
@@ -80,9 +91,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.dashboard.user.edit',[
-            'item' => $user
-        ]);
+        //
     }
 
     /**
@@ -92,13 +101,21 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UserRequest $request, User $user)
+    public function update(User $user)
     {
-        $data = $request->all();
-        
-        $user->update($data);
+        $user->update([
+            'password' => Hash::make('123123123'),
+        ]);
 
         return redirect()->route('dashboard.user.index');
+    }
+
+    public function reset(User $user)
+    {
+        // $data = $request->all();
+        // $user->update($data);
+
+        // return redirect()->route('dashboard.user.index');
     }
 
     /**
