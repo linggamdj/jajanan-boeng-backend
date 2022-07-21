@@ -32,10 +32,7 @@ class ProductGalleryController extends Controller
                         </form>';
                 })
                 ->editColumn('url', function ($item) {
-                    return '<img style="max-width: 150px;" src="'. $item->url .'"/>';
-                })
-                ->editColumn('is_featured', function ($item) {
-                    return $item->is_featured ? 'Yes' : 'No';
+                    return '<img class="mx-auto" style="max-width: 150px;" src="'. $item->url .'"/>';
                 })
                 ->rawColumns(['action', 'url'])
                 ->make();
