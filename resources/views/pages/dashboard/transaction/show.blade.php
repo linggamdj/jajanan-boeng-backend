@@ -15,6 +15,7 @@
                 columns: [
                     { data: 'id', name: 'id', width: '5%'},
                     { data: 'product.name', name: 'product.name' },
+                    { data: 'product.category', name: 'product.category' },
                     { data: 'product.price', name: 'product.price' },
                     { data: 'quantity', name: 'quantity' },
                 ],
@@ -36,7 +37,7 @@
                             </tr>
                             <tr>
                                 <th class="border px-6 py-4 text-right">Address</th>
-                                <td class="border px-6 py-4 uppercase">{{ $transaction->users_address }}</td>
+                                <td class="border px-6 py-4 uppercase">{{ $transaction->user->address }}</td>
                             </tr>
                             <tr>
                                 <th class="border px-6 py-4 text-right">Phone Number</th>
@@ -71,6 +72,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Produk</th>
+                            <th>Kategori</th>
                             <th>Harga</th>
                             <th>Qty</th>
                         </tr>
