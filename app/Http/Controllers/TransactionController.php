@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use App\Http\Requests\TransactionRequest;
+use App\Models\ProductCategory;
 use App\Models\TransactionItem;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -77,6 +78,10 @@ class TransactionController extends Controller
             return DataTables::of($query)
                 ->editColumn('product.price', function ($item) {
                     return "Rp".number_format($item->product->price,2,',','.');
+                })
+                ->editColumn('product.category', function ($item) {
+                    return ProductCategory::where('id', $item->product->categories_id)->pluck('name')->toArray();
+                    // return $item->product->categories_id == 1 ? 'MATANG' : 'SETENGAH MATANG';
                 })
                 ->make();
         }
