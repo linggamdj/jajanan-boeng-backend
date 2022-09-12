@@ -16,7 +16,7 @@ class CreateProductGalleriesTable extends Migration
         Schema::create('product_galleries', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('products_id');
-            $table->string('url');
+            $table->string('url', 60);
 
             $table->softDeletes();
             $table->timestamps();
