@@ -14,7 +14,7 @@ class TransactionController extends Controller
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 6);
+        // $limit = $request->input('limit', 6);
         $status = $request->input('status');
 
         if($id)
@@ -34,13 +34,13 @@ class TransactionController extends Controller
                 );
         }
 
-        $transaction = Transaction::with(['items.product'])->where('users_id', Auth::user()->id);
+        $transaction = Transaction::with(['items.product', 'items.product.category'])->where('users_id', Auth::user()->id);
 
         if($status)
             $transaction->where('status', $status);
 
         return ResponseFormatter::success(
-            $transaction->paginate($limit),
+            $transaction->paginate(),
             'Data list transaksi berhasil diambil'
         );
     }
@@ -61,7 +61,6 @@ class TransactionController extends Controller
 
         $transaction = Transaction::create([
             'users_id' => Auth::user()->id,
-            'users_address' => Auth::user()->address,
             'total_price' => $request->total_price,
             'shipping_price' => $request->shipping_price,
             'status' => $request->status

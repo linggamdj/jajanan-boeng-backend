@@ -17,7 +17,6 @@ class ProductController extends Controller
         $description = $request->input('description');
         $tags = $request->input('tags');
         $categories = $request->input('categories');
-
         $price_from = $request->input('price_from');
         $price_to = $request->input('price_to');
 
@@ -59,7 +58,7 @@ class ProductController extends Controller
             $product->where('categories_id', $categories);
 
         return ResponseFormatter::success(
-            $product->paginate($limit),
+            $product->paginate(),
             'Data list produk berhasil diambil'
         );
     }
