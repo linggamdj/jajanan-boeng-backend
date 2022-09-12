@@ -67,9 +67,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class, 'users_id', 'id');
     }
-    
-    public function transactionAddress()
-    {
-        return $this->hasMany(Transaction::class, 'users_address', 'address');
-    }
 }
